@@ -1,4 +1,6 @@
 # uri-parser
+[![Build Status](https://travis-ci.org/nathan-cruz77/uri-parser.svg?branch=master)](https://travis-ci.org/nathan-cruz77/uri-parser)
+
 Extracts path, query params, numeric IDs and UUIDs from the given URIs.
 
 ## Usage

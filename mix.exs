@@ -5,7 +5,7 @@ defmodule Inserter.MixProject do
     [
       app: :uri_parser,
       version: "0.1.0",
-      elixir: "~> 1.10",
+      elixir: ">= 1.6.0",
       elixirc_paths: elixirc_paths(Mix.env()),
       elixirc_options: [warnings_as_errors: true],
       compilers: Mix.compilers(),

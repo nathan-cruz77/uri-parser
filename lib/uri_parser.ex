@@ -78,7 +78,7 @@ defmodule URIParser do
   """
 
   @uuid_regex ~r/([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12})+/
-  @id_regex ~r/\d+/
+  @id_regex ~r/(?<=\/)\d+/
 
   def parse(uri) do
     uri

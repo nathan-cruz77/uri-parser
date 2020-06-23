@@ -36,6 +36,22 @@ defmodule URIParserTest do
       assert(parsed.ids == ["9126885445002624981"])
     end
 
+    test "is not recognized when it's a single digit part of a string" do
+      url = "https://example.com/v1/resource/9126885445002624981"
+      parsed = URIParser.parse(url)
+
+      assert(parsed.path == "/v1/resource/:id")
+      assert(parsed.ids == ["9126885445002624981"])
+    end
+
+    test "is not recognized when it's multiple digits and is part of a string" do
+      url = "https://example.com/v15/resource/9126885445002624981"
+      parsed = URIParser.parse(url)
+
+      assert(parsed.path == "/v15/resource/:id")
+      assert(parsed.ids == ["9126885445002624981"])
+    end
+
     test "multiple entries" do
       url = "https://example.com/resource/7467384462010192719/some_action/2564"
       parsed = URIParser.parse(url)

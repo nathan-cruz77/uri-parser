@@ -81,6 +81,8 @@ defmodule URIParser do
   @id_regex ~r/(?<=\/)\d+/
 
   def parse(uri) do
+    uri = uri || ""
+
     uri
     |> URI.parse()
     |> Map.drop([:__struct__])
@@ -92,6 +94,12 @@ defmodule URIParser do
   defp parse_uuids(data), do: parse_identifier(data, @uuid_regex, "uuid")
 
   defp parse_ids(data), do: parse_identifier(data, @id_regex, "id")
+
+  defp parse_identifier(%{path: path} = data, _, token) when path in [nil, ""] do
+    data
+    |> Map.put(:"#{token}s", [])
+    |> Map.put(:path, nil)
+  end
 
   defp parse_identifier(%{path: path} = data, regex, token) do
     identifiers =

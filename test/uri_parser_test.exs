@@ -131,4 +131,24 @@ defmodule URIParserTest do
       "other_list" => ["55", "26", "58"]
     })
   end
+
+  describe "empty URI" do
+    test "nil" do
+      parsed = URIParser.parse(nil)
+
+      assert(parsed.path == nil)
+      assert(parsed.query == %{})
+      assert(parsed.uuids == [])
+      assert(parsed.ids == [])
+    end
+
+    test "empty string" do
+      parsed = URIParser.parse("")
+
+      assert(parsed.path == nil)
+      assert(parsed.query == %{})
+      assert(parsed.uuids == [])
+      assert(parsed.ids == [])
+    end
+  end
 end

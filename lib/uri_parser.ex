@@ -120,7 +120,7 @@ defmodule URIParser do
     decoded_query =
       query
       |> URI.query_decoder()
-      |> Enum.reduce(%{}, fn({key, value}, acc) ->
+      |> Enum.reduce(%{}, fn {key, value}, acc ->
         if Map.has_key?(acc, key) do
           add_to_query(acc, key, value)
         else
